@@ -1,0 +1,2 @@
+# Bu proje harici Python paketi gerektirmez.
+# Python 3.10+ standart kütüphanesi yeterlidir.

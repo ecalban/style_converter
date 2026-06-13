@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Projeyi Çalıştır",
+      "type": "shell",
+      "command": "python3",
+      "args": ["-m", "src.server", "--port", "8001"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Testleri Çalıştır",
+      "type": "shell",
+      "command": "python3",
+      "args": ["-m", "unittest", "discover", "-s", "tests"],
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <!-- Sayfanın Türkçe karakterleri doğru göstermesi ve mobil uyumlu olması için temel ayarlar. -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kuşaklararası Köprü</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <!-- Üst başlık: Proje adı ve çalışma durumu burada gösterilir. -->
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Yapay Zeka Projesi</p>
+          <h1>Kuşaklararası Köprü</h1>
+        </div>
+        <div class="status-pill" aria-live="polite" id="statusPill">Hazır</div>
+      </header>
+
+      <!-- Ana çalışma alanı: Sol tarafta kullanıcı girdisi, sağ tarafta model çıktısı bulunur. -->
+      <section class="workspace" aria-label="Üslup dönüştürücü">
+        <!-- Kullanıcının metin yazdığı, persona seçtiği ve dönüştürme başlattığı form. -->
+        <form class="tool-panel" id="transformForm">
+          <div class="field-group">
+            <label for="sourceText">Modern Türkçe</label>
+            <textarea
+              id="sourceText"
+              data-testid="text-input"
+              name="sourceText"
+              spellcheck="true"
+              placeholder="Nasılsın, neler yapıyorsun?"
+            >Nasılsın, neler yapıyorsun?</textarea>
+          </div>
+
+          <!-- Persona seçenekleri JavaScript tarafından /api/personas cevabıyla doldurulur. -->
+          <div class="field-group">
+            <span class="control-label">Persona</span>
+            <div class="persona-grid" id="personaGrid" data-testid="persona-grid"></div>
+          </div>
+
+          <!-- Üslup yoğunluğu LLM promptuna gönderilir ve dönüşümün ne kadar süslü/edebi olacağını belirler. -->
+          <div class="field-group">
+            <div class="range-row">
+              <label for="intensity">Üslup yoğunluğu</label>
+              <output id="intensityValue" for="intensity">Orta</output>
+            </div>
+            <input
+              id="intensity"
+              data-testid="intensity-slider"
+              name="intensity"
+              type="range"
+              min="0.25"
+              max="1"
+              step="0.05"
+              value="0.65"
+            />
+          </div>
+
+          <!-- Video demosunda hızlı deneme yapmak için hazır örnek cümle butonları. -->
+          <div class="sample-row" aria-label="Örnek cümleler">
+            <button type="button" class="ghost-button" data-sample="Bugün okula gidiyorum ve arkadaşımı göreceğim.">
+              Okul
+            </button>
+            <button type="button" class="ghost-button" data-sample="İnternette güzel bir yazı buldum, sonra sana mesaj attım.">
+              Teknoloji
+            </button>
+            <button type="button" class="ghost-button" data-sample="Akşam evde konuşalım, çok önemli bir iş var.">
+              Akşam
+            </button>
+          </div>
+
+          <!-- Bu butona basılınca public/app.js içindeki transformText fonksiyonu çalışır. -->
+          <button class="primary-button" data-testid="transform-button" type="submit">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+            </svg>
+            Dönüştür
+          </button>
+        </form>
+
+        <!-- RAG + LLM dönüşüm sonucunun gösterildiği sağ panel. -->
+        <section class="result-panel" aria-label="Dönüştürme sonucu">
+          <div class="output-header">
+            <div>
+              <p class="eyebrow">Çıktı</p>
+              <h2 id="personaTitle">İstanbul Beyefendisi</h2>
+            </div>
+            <button class="icon-button" id="copyButton" type="button" aria-label="Çıktıyı kopyala" title="Çıktıyı kopyala">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M8 8h10v12H8z" />
+                <path d="M6 16H4V4h12v2" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- LLM tarafından üretilen edebi/üslup dönüştürülmüş metin burada görünür. -->
+          <article class="output-card">
+            <p id="outputText" data-testid="output-text">Afiyettesinizdir umarım, vaktinizi neyle meşgul edersiniz, efendim?</p>
+          </article>
+
+          <!-- Modern teknoloji kelimesi gibi uyarılar burada gösterilir. -->
+          <div class="warning-list" id="warningList" aria-live="polite"></div>
+
+          <!-- Sonuç ayrıntıları için sekmeler: benzer örnekler, sözlükçe ve ölçümler. -->
+          <nav class="tabbar" aria-label="Sonuç ayrıntıları">
+            <button class="tab-button active" type="button" data-tab="examples">RAG örnekleri</button>
+            <button class="tab-button" type="button" data-tab="glossary">Sözlükçe</button>
+            <button class="tab-button" type="button" data-tab="metrics">Ölçüm</button>
+          </nav>
+
+          <!-- Bu üç panelin içeriği JavaScript tarafından API cevabına göre doldurulur. -->
+          <section class="tab-panel active" id="examplesPanel" data-testid="examples-list"></section>
+          <section class="tab-panel" id="glossaryPanel" data-testid="glossary-list"></section>
+          <section class="tab-panel" id="metricsPanel" data-testid="metrics-grid"></section>
+        </section>
+      </section>
+
+      <!-- Öğretmenin sorabileceği model/algoritma sorularına kısa cevaplar. -->
+      <section class="method-section" aria-labelledby="methodTitle">
+        <div>
+          <p class="eyebrow">Teknik Açıklama</p>
+          <h2 id="methodTitle">Model ve Algoritma Cevapları</h2>
+        </div>
+        <div class="method-grid" id="methodList"></div>
+      </section>
+
+      <!-- Kullanılan CSV veri setleri, eğitim/test ayrımı ve model başarımı burada gösterilir. -->
+      <section class="method-section" aria-labelledby="datasetTitle">
+        <div>
+          <p class="eyebrow">Veri Seti ve Eğitim</p>
+          <h2 id="datasetTitle">CSV Kaynakları, Ayrım ve Başarım</h2>
+        </div>
+        <div class="dataset-grid" id="datasetList"></div>
+      </section>
+    </main>
+
+    <!-- Arayüzün tüm etkileşimini yöneten JavaScript dosyası. -->
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

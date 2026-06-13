@@ -1,0 +1,86 @@
+[
+  {
+    "id": "ib-001",
+    "persona": "istanbul_beyefendisi",
+    "title": "Sabah Selami",
+    "author": "Ozgun uslup ornegi",
+    "text": "Efendim, sabah vakti insanin gonlu biraz huzur ister; hal hatir sormak da bu huzurun en ince tarafidir."
+  },
+  {
+    "id": "ib-002",
+    "persona": "istanbul_beyefendisi",
+    "title": "Vakit ve Nezaket",
+    "author": "Ozgun uslup ornegi",
+    "text": "Vaktiniz musaitse bir fincan kahve esliginde meseleyi sakince konusalim; sozun guzeli aceleye gelmez."
+  },
+  {
+    "id": "ib-003",
+    "persona": "istanbul_beyefendisi",
+    "title": "Mektup Kenari",
+    "author": "Ozgun uslup ornegi",
+    "text": "Bendeniz, hatirinizi sormayi bir borc bilirim; umarim sihhatiniz ve neseniz yerindedir."
+  },
+  {
+    "id": "ib-004",
+    "persona": "istanbul_beyefendisi",
+    "title": "Hane Ziyareti",
+    "author": "Ozgun uslup ornegi",
+    "text": "Hanenizin kapisindan iceri giren her misafir, evvela guler yuz ve zarif bir kelam bekler."
+  },
+  {
+    "id": "sait_faik-001",
+    "persona": "sait_faik",
+    "title": "Sokak Payi",
+    "author": "Ozgun uslup ornegi",
+    "text": "Sokak kosesinde duran cocuk, elindeki ekmegi martilarla paylasir gibi gulumsedi; gun biraz daha insana benzedi."
+  },
+  {
+    "id": "sait_faik-002",
+    "persona": "sait_faik",
+    "title": "Kiyida Bir Cumle",
+    "author": "Ozgun uslup ornegi",
+    "text": "Deniz usulca kipirdadi; insanin icindeki kucuk telaslar, balikci sandallarinin ardindan uzaklasti."
+  },
+  {
+    "id": "sait_faik-003",
+    "persona": "sait_faik",
+    "title": "Kahvede Aksam",
+    "author": "Ozgun uslup ornegi",
+    "text": "Kahvenin onunden gecerken herkesin derdi biraz tanidik, herkesin sevinci biraz eksik gorunurdu."
+  },
+  {
+    "id": "sait_faik-004",
+    "persona": "sait_faik",
+    "title": "Kucuk Insanlar",
+    "author": "Ozgun uslup ornegi",
+    "text": "Ben en cok, az konusan ama gozleriyle butun bir hikayeyi anlatan insanlari severim."
+  },
+  {
+    "id": "anadolu_ozani-001",
+    "persona": "anadolu_ozani",
+    "title": "Yol Turkusu",
+    "author": "Ozgun uslup ornegi",
+    "text": "Dost, yol uzun olsa da gonul usanmaz; daglar ardinda bir selam, ovada bir umut saklidir."
+  },
+  {
+    "id": "anadolu_ozani-002",
+    "persona": "anadolu_ozani",
+    "title": "Gonul Divani",
+    "author": "Ozgun uslup ornegi",
+    "text": "Gonul bir kervandir, sevda onun yuku; soz dogru olursa her menzil aydinlanir."
+  },
+  {
+    "id": "anadolu_ozani-003",
+    "persona": "anadolu_ozani",
+    "title": "Koy Aksami",
+    "author": "Ozgun uslup ornegi",
+    "text": "Aksam inince ocakta kor, dilde dua kalir; insan sevdigini sorunca dunya genisler."
+  },
+  {
+    "id": "anadolu_ozani-004",
+    "persona": "anadolu_ozani",
+    "title": "Sazsiz Nida",
+    "author": "Ozgun uslup ornegi",
+    "text": "Ey yolcu, sozunu tart da soyle; kirilan kalbin sedasi dagdan daga ulasir."
+  }
+]
